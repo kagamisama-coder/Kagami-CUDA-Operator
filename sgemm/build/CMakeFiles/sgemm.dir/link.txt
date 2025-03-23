@@ -1,0 +1,1 @@
+/usr/bin/g++-13 -Wl,--dependency-file=CMakeFiles/sgemm.dir/link.d @CMakeFiles/sgemm.dir/objects1.rsp -o /home/guanziming/code/kagami_cuda_operators/sgemm/sgemm @CMakeFiles/sgemm.dir/linkLibs.rsp -L"/opt/cuda/targets/x86_64-linux/lib/stubs" -L"/opt/cuda/targets/x86_64-linux/lib"

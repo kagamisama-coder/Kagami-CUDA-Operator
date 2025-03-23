@@ -1,0 +1,3 @@
+/home/guanziming/code/kagami_cuda_operators/sgemm/build/CMakeFiles/sgemm.dir
+/home/guanziming/code/kagami_cuda_operators/sgemm/build/CMakeFiles/edit_cache.dir
+/home/guanziming/code/kagami_cuda_operators/sgemm/build/CMakeFiles/rebuild_cache.dir
