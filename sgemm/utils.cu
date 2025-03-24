@@ -1,5 +1,5 @@
 #include <cstdlib>
-#include<iomanip>
+#include <iomanip>
 
 #include "kernel.cuh"
 #include "utils.cuh"
@@ -110,11 +110,17 @@ void test_kernel1(float *A, float *B, float *C, int M, int N, int K) {
   sgemm_v1<<<gridDim, blockDim>>>(A, B, C, M, N, K);
 }
 
+void test_kernel2(float *A, float *B, float *C, int M, int N, int K) {
+  dim3 blockDim(32 * 32);
+  dim3 gridDim(CEIL(M, 32), CEIL(N, 32));
+  sgemm_v2<32><<<gridDim, blockDim>>>(A, B, C, M, N, K);
+}
+
 void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
                  int K, cublasHandle_t handle) {
   cudaEvent_t start, stop;
-  CUDA_CHECK(cudaEventCreate(&start)); // 创建起始事件
-  CUDA_CHECK(cudaEventCreate(&stop));  // 创建结束事件
+  CUDA_CHECK(cudaEventCreate(&start));  // 创建起始事件
+  CUDA_CHECK(cudaEventCreate(&stop));   // 创建结束事件
 
   // 记录起始事件
   CUDA_CHECK(cudaEventRecord(start));
@@ -125,13 +131,16 @@ void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
     case 1:
       test_kernel1(A, B, C, M, N, K);
       break;
+    case 2:
+      test_kernel2(A, B, C, M, N, K);
+      break;
 
     default:
+      std::cerr << "[ERROR]: Kernel num does not exist!" << std::endl;
       break;
   }
 
   cudaDeviceSynchronize();
-      // 记录结束事件
   CUDA_CHECK(cudaEventRecord(stop));
 
   // 等待 kernel 执行完成
@@ -145,6 +154,8 @@ void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
   CUDA_CHECK(cudaEventDestroy(start));
   CUDA_CHECK(cudaEventDestroy(stop));
 
-  std::cout << "kernel_num: " << kernel_num
-            << " cost time: " << std::fixed << milliseconds / 1000 << "s" << std::endl;
+  float gflops = 1.0 * 2 * M * N * K * 1000 * 1e-9 / milliseconds;
+  std::cout << "Kernel num: " << kernel_num << " Cost time: " << std::fixed
+            << milliseconds / 1000 << "s" << " Performance: " << std::fixed
+            << gflops << " GFLOPS" << std::endl;
 }

@@ -22,6 +22,8 @@ void test_cublas(cublasHandle_t handle, int M, int N, int K, float alpha,
 
 void test_kernel1(float *A, float *B, float *C, int M, int N, int K);
 
+void test_kernel2(float *A, float *B, float *C, int M, int N, int K);
+
 void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
                  int K, cublasHandle_t handle);
 

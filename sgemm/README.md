@@ -6,3 +6,5 @@
 ## kernel 3 一维thread tile + shared memory优化
 
 ## kernel 4 二维thread tile + shared memory优化
+
+## kernel 5 FLOAT4优化
