@@ -39,8 +39,8 @@ int main() {
 
   const int repeat_time = 10;
 
-  for (int i = 0; i < repeat_time; i++) {
-    std::cout << "============Epoch " << i + 1 << "===========" << std::endl;
+  for (int epoch = 0; epoch < repeat_time; epoch++) {
+    std::cout << "============Epoch " << epoch + 1 << "===========" << std::endl;
 
     init_matrix(h_A, M, K);
     init_matrix(h_B, K, N);
@@ -52,7 +52,7 @@ int main() {
 
     cudaMemcpy(h_C_ref, d_C_ref, size_C, cudaMemcpyDeviceToHost);
 
-    test_kernel(2, d_A, d_B, d_C, M, N, K, handle);
+    test_kernel(3, d_A, d_B, d_C, M, N, K, handle);
 
     cudaMemcpy(h_C, d_C, size_C, cudaMemcpyDeviceToHost);
 

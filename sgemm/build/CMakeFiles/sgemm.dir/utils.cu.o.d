@@ -273,6 +273,9 @@ CMakeFiles/sgemm.dir/utils.cu.o : /home/guanziming/code/kagami_cuda_operators/sg
     /home/guanziming/code/kagami_cuda_operators/sgemm/src/kernel.cuh \
     /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v1.cuh \
     /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v2.cuh \
+    /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v3.cuh \
+    /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v4.cuh \
+    /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v5.cuh \
     /home/guanziming/code/kagami_cuda_operators/sgemm/utils.cuh \
     /opt/cuda/bin/../targets/x86_64-linux/include/cublas_v2.h \
     /opt/cuda/bin/../targets/x86_64-linux/include/cublas_api.h \

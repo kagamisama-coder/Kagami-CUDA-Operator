@@ -316,6 +316,9 @@ CMakeFiles/sgemm.dir/utils.cu.o: /home/guanziming/code/kagami_cuda_operators/sge
   /home/guanziming/code/kagami_cuda_operators/sgemm/src/kernel.cuh \
   /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v1.cuh \
   /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v2.cuh \
+  /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v3.cuh \
+  /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v4.cuh \
+  /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v5.cuh \
   /home/guanziming/code/kagami_cuda_operators/sgemm/utils.cuh \
   /opt/cuda/targets/x86_64-linux/include/builtin_types.h \
   /opt/cuda/targets/x86_64-linux/include/channel_descriptor.h \
@@ -618,6 +621,8 @@ CMakeFiles/sgemm.dir/utils.cu.o: /home/guanziming/code/kagami_cuda_operators/sge
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/bits/locale_facets_nonio.h:
 
+/home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v5.cuh:
+
 /home/guanziming/code/kagami_cuda_operators/sgemm/src/kernel.cuh:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/stddef.h:
@@ -635,6 +640,8 @@ CMakeFiles/sgemm.dir/utils.cu.o: /home/guanziming/code/kagami_cuda_operators/sge
 /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/x86_64-pc-linux-gnu/bits/error_constants.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/x86_64-pc-linux-gnu/bits/ctype_inline.h:
+
+/home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v4.cuh:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/x86_64-pc-linux-gnu/bits/ctype_base.h:
 
@@ -1219,6 +1226,8 @@ CMakeFiles/sgemm.dir/utils.cu.o:
 /usr/include/bits/iscanonical.h:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/bits/exception_ptr.h:
+
+/home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v3.cuh:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/bits/hash_bytes.h:
 

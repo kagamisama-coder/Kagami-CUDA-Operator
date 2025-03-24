@@ -98,6 +98,13 @@ void init_matrix(float *matrix, int M, int N) {
   }
 }
 
+void print_kernel_info(int kernel_num, int milliseconds, int M, int N, int K){
+  float gflops = 1.0 * 2 * M * N * K * 1000 * 1e-9 / milliseconds;
+  std::cout << "Kernel num: " << kernel_num << " Cost time: " << std::fixed
+            << milliseconds / 1000 << "s" << " Performance: " << std::fixed
+            << gflops << " GFLOPS" << std::endl;
+}
+
 void test_cublas(cublasHandle_t handle, int M, int N, int K, float alpha,
                  float *A, float *B, float beta, float *C) {
   cublasSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, N, M, K, &alpha, B, N, A, K,
@@ -116,13 +123,24 @@ void test_kernel2(float *A, float *B, float *C, int M, int N, int K) {
   sgemm_v2<32><<<gridDim, blockDim>>>(A, B, C, M, N, K);
 }
 
+void test_kernel3(float *A, float *B, float *C, int M, int N, int K){
+  dim3 blockDim(64 * 8);
+  dim3 gridDim(CEIL(M, 64), CEIL(N, 64));
+  sgemm_v3<64, 64, 8, 8><<<gridDim, blockDim>>>(A, B, C, M, N, K);
+}
+
+void test_kernel4(float *A, float *B, float *C, int M, int N, int K){
+  dim3 blockDim(1);
+  dim3 gridDim(1);
+  sgemm_v4<1, 1, 1, 1, 1><<<gridDim, blockDim>>>(A, B, C, M, N, K);
+}
+
 void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
                  int K, cublasHandle_t handle) {
   cudaEvent_t start, stop;
-  CUDA_CHECK(cudaEventCreate(&start));  // 创建起始事件
-  CUDA_CHECK(cudaEventCreate(&stop));   // 创建结束事件
+  CUDA_CHECK(cudaEventCreate(&start));
+  CUDA_CHECK(cudaEventCreate(&stop));
 
-  // 记录起始事件
   CUDA_CHECK(cudaEventRecord(start));
   switch (kernel_num) {
     case 0:
@@ -134,7 +152,11 @@ void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
     case 2:
       test_kernel2(A, B, C, M, N, K);
       break;
-
+    case 3:
+      test_kernel3(A, B, C, M, N, K);
+      break;
+    case 4:
+      test_kernel4(A, B, C, M, N, K);
     default:
       std::cerr << "[ERROR]: Kernel num does not exist!" << std::endl;
       break;
@@ -143,19 +165,13 @@ void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
   cudaDeviceSynchronize();
   CUDA_CHECK(cudaEventRecord(stop));
 
-  // 等待 kernel 执行完成
   CUDA_CHECK(cudaEventSynchronize(stop));
 
-  // 计算时间差
   float milliseconds = 0.0f;
   CUDA_CHECK(cudaEventElapsedTime(&milliseconds, start, stop));
 
-  // 销毁事件
   CUDA_CHECK(cudaEventDestroy(start));
   CUDA_CHECK(cudaEventDestroy(stop));
 
-  float gflops = 1.0 * 2 * M * N * K * 1000 * 1e-9 / milliseconds;
-  std::cout << "Kernel num: " << kernel_num << " Cost time: " << std::fixed
-            << milliseconds / 1000 << "s" << " Performance: " << std::fixed
-            << gflops << " GFLOPS" << std::endl;
+  print_kernel_info(kernel_num, milliseconds, M, N, K);
 }

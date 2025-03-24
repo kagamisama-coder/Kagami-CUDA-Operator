@@ -1,5 +1,4 @@
 #pragma once
-#include<cstdio>
 template <const int BLOCK_SIZE>
 __global__ void sgemm_v2(const float *A, const float *B, float *C, int M, int N, int K){
   int by = blockIdx.y;
