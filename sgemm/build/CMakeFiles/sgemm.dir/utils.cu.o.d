@@ -275,8 +275,7 @@ CMakeFiles/sgemm.dir/utils.cu.o : /home/guanziming/code/kagami_cuda_operators/sg
     /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v2.cuh \
     /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v3.cuh \
     /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v4.cuh \
-    /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v5.cuh \
-    /home/guanziming/code/kagami_cuda_operators/sgemm/utils.cuh \
+    /home/guanziming/code/kagami_cuda_operators/sgemm/src/../utils.cuh \
     /opt/cuda/bin/../targets/x86_64-linux/include/cublas_v2.h \
     /opt/cuda/bin/../targets/x86_64-linux/include/cublas_api.h \
     /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/stdint.h \
@@ -298,4 +297,5 @@ CMakeFiles/sgemm.dir/utils.cu.o : /home/guanziming/code/kagami_cuda_operators/sg
     /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/bits/basic_ios.tcc \
     /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/bits/ostream.tcc \
     /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/istream \
-    /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/bits/istream.tcc
+    /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/bits/istream.tcc \
+    /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v5.cuh

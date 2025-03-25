@@ -4,7 +4,6 @@
 #include <iostream>
 
 #define CEIL(a, b) ((a + b - 1) / (b))
-#define FLOAT4(value) (reinterpret_cast<float4 *>(&(value))[0])
 #define CUDA_CHECK(err) cudaCheck((err), __FILE__, __LINE__)
 
 void cudaCheck(cudaError_t err, const char *file, int line);

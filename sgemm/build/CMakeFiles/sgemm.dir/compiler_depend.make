@@ -313,13 +313,13 @@ CMakeFiles/sgemm.dir/sgemm.cu.o: /home/guanziming/code/kagami_cuda_operators/sge
   /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/syslimits.h
 
 CMakeFiles/sgemm.dir/utils.cu.o: /home/guanziming/code/kagami_cuda_operators/sgemm/utils.cu \
+  /home/guanziming/code/kagami_cuda_operators/sgemm/utils.cuh \
   /home/guanziming/code/kagami_cuda_operators/sgemm/src/kernel.cuh \
   /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v1.cuh \
   /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v2.cuh \
   /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v3.cuh \
   /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v4.cuh \
   /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v5.cuh \
-  /home/guanziming/code/kagami_cuda_operators/sgemm/utils.cuh \
   /opt/cuda/targets/x86_64-linux/include/builtin_types.h \
   /opt/cuda/targets/x86_64-linux/include/channel_descriptor.h \
   /opt/cuda/targets/x86_64-linux/include/crt/common_functions.h \

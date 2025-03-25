@@ -129,10 +129,17 @@ void test_kernel3(float *A, float *B, float *C, int M, int N, int K){
   sgemm_v3<64, 64, 8, 8><<<gridDim, blockDim>>>(A, B, C, M, N, K);
 }
 
+// 一个block是线程是(16, 16), 每个线程负责(8, 8), block负责的矩阵区域是(128, 128) 
 void test_kernel4(float *A, float *B, float *C, int M, int N, int K){
-  dim3 blockDim(1);
-  dim3 gridDim(1);
-  sgemm_v4<1, 1, 1, 1, 1><<<gridDim, blockDim>>>(A, B, C, M, N, K);
+  dim3 blockDim(16 * 16);
+  dim3 gridDim(CEIL(M, 128), CEIL(N, 128));
+  sgemm_v4<128, 128, 8, 8, 8><<<gridDim, blockDim>>>(A, B, C, M, N, K);
+}
+
+void test_kernel5(float *A, float *B, float *C, int M, int N, int K){
+  dim3 blockDim(16 * 16);
+  dim3 gridDim(CEIL(M, 128), CEIL(N, 128));
+  sgemm_v5<128, 128, 8, 8, 8><<<gridDim, blockDim>>>(A, B, C, M, N, K);
 }
 
 void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
@@ -157,6 +164,10 @@ void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
       break;
     case 4:
       test_kernel4(A, B, C, M, N, K);
+      break;
+    case 5:
+      test_kernel5(A, B, C, M, N, K);
+      break;
     default:
       std::cerr << "[ERROR]: Kernel num does not exist!" << std::endl;
       break;

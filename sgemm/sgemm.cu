@@ -52,7 +52,7 @@ int main() {
 
     cudaMemcpy(h_C_ref, d_C_ref, size_C, cudaMemcpyDeviceToHost);
 
-    test_kernel(3, d_A, d_B, d_C, M, N, K, handle);
+    test_kernel(5, d_A, d_B, d_C, M, N, K, handle);
 
     cudaMemcpy(h_C, d_C, size_C, cudaMemcpyDeviceToHost);
 
