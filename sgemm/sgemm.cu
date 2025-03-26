@@ -4,7 +4,6 @@ int main() {
   const int M = 6144;
   const int N = 6144;
   const int K = 6144;
-  CudaDeviceInfo();
   float *h_A = nullptr, *h_B = nullptr, *h_C = nullptr, *h_C_ref = nullptr;
   float *d_A = nullptr, *d_B = nullptr, *d_C = nullptr, *d_C_ref = nullptr;
 

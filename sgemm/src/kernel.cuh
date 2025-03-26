@@ -5,3 +5,4 @@
 #include"sgemm_v3.cuh"
 #include"sgemm_v4.cuh"
 #include"sgemm_v5.cuh"
+#include"sgemm_v6.cuh"

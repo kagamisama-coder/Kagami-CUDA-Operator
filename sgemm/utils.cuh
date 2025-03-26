@@ -31,6 +31,8 @@ void test_kernel4(float *A, float *B, float *C, int M, int N, int K);
 
 void test_kernel5(float *A, float *B, float *C, int M, int N, int K);
 
+void test_kernel6(float *A, float *B, float *C, int M, int N, int K);
+
 void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
                  int K, cublasHandle_t handle);
 

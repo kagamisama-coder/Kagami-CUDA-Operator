@@ -7,4 +7,6 @@
 
 ## kernel 4 二维thread tile + shared memory优化
 
-## kernel 5 FLOAT4优化
+## kernel 5 FLOAT4向量化访存优化
+
+## kernel 6 二维thread tile + FLOAT4向量化访存 + 双缓存预取优化

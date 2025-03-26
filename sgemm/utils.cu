@@ -142,6 +142,12 @@ void test_kernel5(float *A, float *B, float *C, int M, int N, int K){
   sgemm_v5<128, 128, 8, 8, 8><<<gridDim, blockDim>>>(A, B, C, M, N, K);
 }
 
+void test_kernel6(float *A, float *B, float *C, int M, int N, int K){
+  dim3 blockDim(16 * 16);
+  dim3 gridDim(CEIL(M, 128), CEIL(N, 128));
+  sgemm_v6<128, 128, 8, 8, 8><<<gridDim, blockDim>>>(A, B, C, M, N, K);
+}
+
 void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
                  int K, cublasHandle_t handle) {
   cudaEvent_t start, stop;
@@ -167,6 +173,9 @@ void test_kernel(int kernel_num, float *A, float *B, float *C, int M, int N,
       break;
     case 5:
       test_kernel5(A, B, C, M, N, K);
+      break;
+    case 6:
+      test_kernel6(A, B, C, M, N, K);
       break;
     default:
       std::cerr << "[ERROR]: Kernel num does not exist!" << std::endl;

@@ -298,4 +298,5 @@ CMakeFiles/sgemm.dir/utils.cu.o : /home/guanziming/code/kagami_cuda_operators/sg
     /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/bits/ostream.tcc \
     /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/istream \
     /usr/lib/gcc/x86_64-pc-linux-gnu/13.3.1/include/c++/bits/istream.tcc \
-    /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v5.cuh
+    /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v5.cuh \
+    /home/guanziming/code/kagami_cuda_operators/sgemm/src/sgemm_v6.cuh
