@@ -1,6 +1,6 @@
 #pragma once
 
-#define FLOAT4(value) (reinterpret_cast<float4*>(&(value))[0])
+// #define FLOAT4(value) (reinterpret_cast<float4*>(&(value))[0])
 
 // 双缓冲预取优化，最终优化版本
 template<const int BM, const int BN, const int BK, const int TM, const int TN>

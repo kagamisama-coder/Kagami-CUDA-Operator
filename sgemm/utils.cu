@@ -98,10 +98,10 @@ void init_matrix(float *matrix, int M, int N) {
   }
 }
 
-void print_kernel_info(int kernel_num, int milliseconds, int M, int N, int K){
-  float gflops = 1.0 * 2 * M * N * K * 1000 * 1e-9 / milliseconds;
+void print_kernel_info(int kernel_num, float milliseconds, int M, int N, int K){
+  double gflops = 1.0 * 2 * M * N * K * 1000 * 1e-9 / milliseconds;
   std::cout << "Kernel num: " << kernel_num << " Cost time: " << std::fixed
-            << milliseconds / 1000 << "s" << " Performance: " << std::fixed
+            << milliseconds << "ms" << " Performance: " << std::fixed
             << gflops << " GFLOPS" << std::endl;
 }
 

@@ -71,16 +71,21 @@ __global__ void sgemm_v5(float *A, float *B, float *C, int M, int N, int K) {
     A += BK;
     B += BK * N;
 
+    #pragma unroll
     for (int i = 0; i < BK; i++){
+      #pragma unroll
       for (int m = 0; m < TM; m+=4){
         // 此时As已经进行过转置，格式是(BK, BM)
         FLOAT4(a_frag[m]) = FLOAT4(As[i * BM + ty + m]);
       }
+      #pragma unroll
       for (int n = 0; n < TN; n+=4){
         FLOAT4(b_frag[n]) = FLOAT4(Bs[i * BN + tx + n]);
       }
 
+      #pragma unroll
       for (int m = 0; m < TM; m++){
+        #pragma unroll
         for (int n = 0; n < TN; n++){
           accum[m][n] += a_frag[m] * b_frag[n];
         }
