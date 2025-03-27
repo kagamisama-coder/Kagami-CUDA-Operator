@@ -18,6 +18,8 @@ void init_matrix(float *matrix, int M, int N);
 
 void print_kernel_info(int kernel_num, int milliseconds, int M, int N, int K);
 
+void write_kernel_info(int kernel_num, float milliseconds, int M, int N, int K);
+
 void test_cublas(cublasHandle_t handle, int M, int N, int K, float alpha,
                  float *A, float *B, float beta, float *C);
 

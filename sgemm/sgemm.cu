@@ -1,6 +1,19 @@
 #include "utils.cuh"
 
-int main() {
+int size[25];
+
+int main(int argc, char* argv[]) {
+
+  if(argc < 2){
+    std::cout << "Usage: ./sgemm <kernel_num>\n Example: ./sgemm 1" << std::endl;
+    return 1;
+  }
+
+  int kernel_num = std::stoi(argv[1]);
+
+  for (int i = 0; i < 25; i++){
+    size[i] = (i + 1) * 256;
+  }
   srand(time(0));
   const int M = 4096;
   const int N = 4096;
@@ -34,7 +47,8 @@ int main() {
   init_matrix(h_B, K, N);
   CUDA_CHECK(cudaMemcpy(d_A, h_A, size_A, cudaMemcpyHostToDevice));
   CUDA_CHECK(cudaMemcpy(d_B, h_B, size_B, cudaMemcpyHostToDevice));
-  test_kernel(0, d_A, d_B, d_C, M, N, K, handle);
+  test_kernel(0, d_A, d_B, d_C_ref, M, N, K, handle);
+  test_kernel(kernel_num, d_A, d_B, d_C, M, N, K, handle);
   cudaDeviceSynchronize();
 
   const int repeat_time = 10;
@@ -52,7 +66,7 @@ int main() {
 
     cudaMemcpy(h_C_ref, d_C_ref, size_C, cudaMemcpyDeviceToHost);
 
-    test_kernel(5, d_A, d_B, d_C, M, N, K, handle);
+    test_kernel(kernel_num, d_A, d_B, d_C, M, N, K, handle);
 
     cudaMemcpy(h_C, d_C, size_C, cudaMemcpyDeviceToHost);
 

@@ -105,6 +105,10 @@ void print_kernel_info(int kernel_num, float milliseconds, int M, int N, int K){
             << gflops << " GFLOPS" << std::endl;
 }
 
+void write_kernel_info(int kernel_num, float milliseconds, int M, int N, int K){
+  
+}
+
 void test_cublas(cublasHandle_t handle, int M, int N, int K, float alpha,
                  float *A, float *B, float beta, float *C) {
   cublasSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, N, M, K, &alpha, B, N, A, K,

@@ -71,11 +71,13 @@ __global__ void sgemm_v5(float *A, float *B, float *C, int M, int N, int K) {
     A += BK;
     B += BK * N;
 
+    // 开始进行计算，根据公式C[i][j] = \sum_{k = 0}^{BK} A_T[k][i] * B[k][j]
     #pragma unroll
     for (int i = 0; i < BK; i++){
       #pragma unroll
       for (int m = 0; m < TM; m+=4){
         // 此时As已经进行过转置，格式是(BK, BM)
+        // 这一步对应的是将As中的值读取到对应的a_frag数组当中，填满a_frag数组
         FLOAT4(a_frag[m]) = FLOAT4(As[i * BM + ty + m]);
       }
       #pragma unroll
@@ -98,7 +100,7 @@ __global__ void sgemm_v5(float *A, float *B, float *C, int M, int N, int K) {
   for (int m = 0; m < TM; m++){
     #pragma unroll
     for (int n = 0; n < TN; n+=4){
-      float4 ctmp = FLOAT4(C[(ty + m) * N + tx + n]);
+      float4 ctmp; // 已经得到本线程计算出的accum的最终结果，最后使用FLOAT4赋值给最终的矩阵C
       ctmp.x = accum[m][n];
       ctmp.y = accum[m][n + 1];
       ctmp.z = accum[m][n + 2];
